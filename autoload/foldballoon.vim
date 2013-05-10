@@ -14,6 +14,21 @@ set cpo&vim
 
 
 
+function! foldballoon#balloonexpr(...)
+    let default = a:0 ? a:1 : ''
+    if foldclosed(v:beval_lnum)
+        let lines = getline(v:beval_lnum, foldclosedend(v:beval_lnum))
+        if has("balloon_multiline")
+            return join(lines, "\n")
+        else
+            return join(lines, " \\n ")
+        endif
+    else
+        return default
+    endif
+endfunction
+
+
 " Restore 'cpoptions' {{{
 let &cpo = s:save_cpo
 " }}}
