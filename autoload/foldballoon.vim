@@ -15,9 +15,14 @@ set cpo&vim
 
 
 function! foldballoon#balloonexpr(...)
-    let default = a:0 ? a:1 : ''
+    let default = get(a:000, 0, '')
+    let maxlnum = get(a:000, 1, 25)
+    let repstr  = get(a:000, 2, ' ...(truncated)')
     if foldclosed(v:beval_lnum)
         let lines = getline(v:beval_lnum, foldclosedend(v:beval_lnum))
+        if len(lines) > maxlnum
+            let lines = lines[: maxlnum-1] + [repstr]
+        endif
         if has("balloon_multiline")
             return join(lines, "\n")
         else

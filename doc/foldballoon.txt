@@ -45,7 +45,7 @@ INTERFACE				*foldballoon-interface* {{{
 FUNCTIONS					*foldballoon-functions* {{{
 
 							*foldballoon#balloonexpr()*
-foldballoon#balloonexpr([{default} [, {maxlnum}] [, {repstr}]])
+foldballoon#balloonexpr([{default} [, {maxlnum} [, {repstr}]]])
 	In .vimrc, you can use this function like the followings: >
 	set ballooneval
 	set balloonexpr=foldballoon#balloonexpr()
@@ -58,12 +58,12 @@ foldballoon#balloonexpr([{default} [, {maxlnum}] [, {repstr}]])
 
 	The max number of displayed lines on balloon
 	is determined by {maxlnum}.
-	If displayed lines exceeds {maxlnum},
-	truncated with string {repstr}.
+	If the displayed lines exceeds {maxlnum},
+	{repstr} is inserted at the {maxlnum}+1 th element.
 	If {maxlnum} was not given,
-	fixed number 50 is used instead.
+	fixed number 25 is used instead.
 	If {repstr} was not given,
-	" ..." is used instead.
+	" ...(truncated)" is used instead.
 
 }}}
 }}}
